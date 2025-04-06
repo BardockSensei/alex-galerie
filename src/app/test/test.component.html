@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Test de connexion Firebase</h1>
+
+  <div class="add-item-form">
+    <h3>Ajouter un nouvel élément</h3>
+    <div class="input-group">
+      <input
+        type="text"
+        [(ngModel)]="newItemName"
+        placeholder="Nom de l'élément"
+      />
+      <button (click)="addItem()">Ajouter</button>
+    </div>
+  </div>
+
+  <div class="items-list">
+    <h3>Éléments depuis Firebase</h3>
+    <div *ngIf="items.length === 0" class="empty-state">
+      Aucun élément trouvé. Ajoutez-en un!
+    </div>
+    <ul>
+      <li *ngFor="let item of items">
+        <span>{{ item.name }} - </span>
+        <span class="date">{{ item.createdAt }}</span>
+        <button class="delete-btn" (click)="deleteItem(item.id)">
+          Supprimer
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
